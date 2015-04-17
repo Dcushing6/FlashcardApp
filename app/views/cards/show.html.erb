@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+    <style type="text/css">
+      .card {
+        width: 600px;
+        height: 400px;
+        margin: 20px;
+      }
+      .front, .back {
+        border: 2px gray solid;
+        padding: 10px;
+      }
+      .front {
+        background-color: #ccc;
+      }
+      .back {
+        background-color: #fff;
+      }
+    </style>
+
+    <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+        </div>
+        <div id="main-content" class="col-xs-6">
+	<div id="card-1" class="card"  style="background-color:#dddddd;"> 
+	  <div class="front"> 
+	    <p>
+	      <h1 style="text-align:center;"><%= @card.title %></h1>
+	    </p>
+	  </div> 
+	  <div class="back">
+	    <p>
+	      <h2 style="text-align:center;"><%= @card.notes %></h2>
+	    </p>
+	  </div> 
+	</div>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript">
+    $(function(){
+      // $(".card").flip();
+      
+      $("#card-1").flip({
+        axis: "y", // y or x
+        reverse: false, // true and false
+        trigger: "click", // click or hover
+        speed: 1000
+      });
+    });
+</script>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>

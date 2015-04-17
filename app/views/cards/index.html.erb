@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cards</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><h5><%= card.title %></h5></td>
+        <td><h5><%= card.notes %></h5></td>
+        <td>
+	  <%= link_to card, class: 'btn btn-default' do %>
+  	    <i class="glyphicon glyphicon-pushpin"></i> Display
+	  <% end %>
+        </td>
+        <td>
+          <%= link_to edit_card_path(card), class: 'btn btn-default' do %>
+  	    <i class="glyphicon glyphicon-pencil"></i> Edit
+	  <% end %>
+        </td>
+        <td>
+          <%= link_to 'Remove', card, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-default'%>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card', new_card_path, class: 'btn btn-default' %>
+<%= link_to 'Carousel View', show_with_carousel_cards_path, class: 'btn btn-default' %>
